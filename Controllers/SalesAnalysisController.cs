@@ -1,5 +1,6 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
+//using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,7 @@ namespace SalesRecord_WebAPI.Controllers
             //private static SalesAnalysis apiOutput = new SalesAnalysis();
             SalesAnalysis apiOutput = new SalesAnalysis();
             List<double> unitPrices = new List<double>();
+            Dictionary<string, int> regions = new Dictionary<string, int>();
 
             //private static List<SaleEntry> salesRecord = SalesAnalysisController.readCsvRecordFile();
             List<SaleEntry> salesRecord = SalesAnalysisController.readCsvRecordFile();
@@ -71,6 +73,10 @@ namespace SalesRecord_WebAPI.Controllers
                 //Checking if the curent item order date is later than than the last order date on record
                 if (item.OrderDate > apiOutput.LastOrderDate){ apiOutput.LastOrderDate = item.OrderDate;}
 
+                //checking if the region is presentin the region hashtable: if yes, increment it's frequency/value, if no then add to the table
+                if (regions.ContainsKey(item.Region)) {regions[item.Region] = Convert.ToInt32(regions[item.Region])+ 1;}
+                else { regions.Add(item.Region, 1);}
+
             }
 
             //Sort the unit price list before calculating the median 
@@ -86,7 +92,11 @@ namespace SalesRecord_WebAPI.Controllers
             if ((unitPrices.Count % 2)!=0) {apiOutput.MedianUnitCost = unitPrices[(unitPrices.Count + 1)/2];}
             else {apiOutput.MedianUnitCost = unitPrices[((unitPrices.Count/2)+((unitPrices.Count/2)+1))/2];}
 
+            //Check for the most common region
+            apiOutput.MostCommonRegionn = regions.Aggregate((x,y) => x.Value > y.Value ? x:y).Key;
+
             return apiOutput;
+
         }
         
 
