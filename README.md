@@ -42,6 +42,7 @@ _Hint: a web api skeleton can be created with `dotnet new webapi`_
 To run this solution effectively, make sure that the following requirements are met on the local host:
 * Download and Install .NET SDK preferably version 7.0 (_https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.203-windows-x64-installer_)
 * Download and install the CSV Helper package:
+
         `dotnet add package CsvHelper --version 30.0.1`
 
 Start the web server by running the folowing command inside the project folder (cmd or powershell window):
