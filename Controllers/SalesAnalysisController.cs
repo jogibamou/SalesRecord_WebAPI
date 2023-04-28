@@ -17,21 +17,21 @@ namespace SalesRecord_WebAPI.Controllers
     [Route("api/[controller]")]
     public class SalesAnalysisController : ControllerBase
     {
-        /*
-        In the event that the .csv file does not follow the conventional format, use the following code snippet to adjust the csv reader parameters:
-
-        var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
-            {
-                Delimiter = ",",
-                Comment = '#',
-                HasHeaderRecord = false
-            };
-        
-        */
 
         // Helper function that reads the data contained in the .csv file and store it in a List data structure
         public static List<SaleEntry> readCsvRecordFile(){
 
+            /*
+            In the event that the .csv file does not follow the conventional format, use the following code snippet to adjust the csv reader parameters:
+
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ",",
+                Comment = '#',
+                HasHeaderRecord = true
+            };
+        
+            */
 
             //creating an absolute path to the .csv file containing the data
             string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;              
