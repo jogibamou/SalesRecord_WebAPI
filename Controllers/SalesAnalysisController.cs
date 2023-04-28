@@ -95,6 +95,9 @@ namespace SalesRecord_WebAPI.Controllers
             //Check for the most common region
             apiOutput.MostCommonRegionn = regions.Aggregate((x,y) => x.Value > y.Value ? x : y).Key;
 
+            //Calculating the days between first and last order
+            apiOutput.DaysBetween = apiOutput.LastOrderDate.DayNumber - apiOutput.FirstOrderDate.DayNumber;
+
             return apiOutput;
 
         }

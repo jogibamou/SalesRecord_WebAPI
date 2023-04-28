@@ -18,6 +18,8 @@ namespace SalesRecord_WebAPI.Models
         //The default last order date will be the earliest possible date
         public DateOnly LastOrderDate { get; set; } = new DateOnly(0001, 01, 01);
 
+        public int DaysBetween { get; set;} = 0;
+
         public double TotalRevenue { get; set; } = 0.0;
     }
 }
