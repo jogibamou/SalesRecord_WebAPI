@@ -38,6 +38,8 @@ Create a web API that can parse a sales record file into an object. The API shou
 
 _Hint: a web api skeleton can be created with `dotnet new webapi`_
 
+<be></br>
+
 ## Solution:
 To run this solution effectively, make sure that the following requirements are met on the local host:
 * Download and Install .NET SDK preferably version 7.0 (_https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.203-windows-x64-installer_)
@@ -46,7 +48,14 @@ To run this solution effectively, make sure that the following requirements are 
         `dotnet add package CsvHelper --version 30.0.1`
 
 Start the web server by running the folowing command inside the project folder (cmd or powershell window):
-`dotnet watch run`
 
-use the following command in a CLI (powershell or cmd) to query the api and obeserve the response message:
-`curl http://localhost:5276/api/SalesAnalysis`
+        `dotnet watch run`
+
+use the following command in a CLI (powershell or cmd) to query the api and obeserve the response message (_assuming the port is not modified_):
+
+        `curl http://localhost:5276/api/SalesAnalysis`
+
+
+For simplicity's sake I did not go throught the process of creating _services_ for the controller. Because the web API is to respond to a single `'GET'` request, I chose to make the project as lightweight as possible. 
+
+Also since, the solution is supposed to be ran locally, I chose to store the relatively small dataset in a _local data structure_ instead of a full fledge _database_ which would have made the setup requirement much more extensive.
