@@ -93,7 +93,7 @@ namespace SalesRecord_WebAPI.Controllers
             else {apiOutput.MedianUnitCost = unitPrices[((unitPrices.Count/2)+((unitPrices.Count/2)+1))/2];}
 
             //Check for the most common region
-            apiOutput.MostCommonRegionn = regions.Aggregate((x,y) => x.Value > y.Value ? x:y).Key;
+            apiOutput.MostCommonRegionn = regions.Aggregate((x,y) => x.Value > y.Value ? x : y).Key;
 
             return apiOutput;
 
